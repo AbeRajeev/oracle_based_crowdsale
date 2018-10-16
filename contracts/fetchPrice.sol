@@ -1,5 +1,6 @@
 pragma solidity ^0.4.11;
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+//import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "./usingOraclize.sol";
 
 contract fetchPrice is usingOraclize {
 
@@ -29,12 +30,5 @@ contract fetchPrice is usingOraclize {
            oraclize_query("URL", "json(https://api.gdax.com/products/ETH-USD/ticker).price");
        }
    }
-
-  function kill() public{
-    selfdestruct(admin);
-  }
-
-	
-
    
 }
