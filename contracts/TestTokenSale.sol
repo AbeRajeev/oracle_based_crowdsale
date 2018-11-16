@@ -21,8 +21,6 @@ contract TestTokenSale is fetchPrice{
     _;
   }
 
-  // first one is the original 
-  //constructor(EdenToken _tokenContract, uint256 _tokenPrice, uint256 _endTime) public{
   constructor(TestToken _tokenContract) public{
 
     admin = msg.sender;
@@ -40,8 +38,10 @@ contract TestTokenSale is fetchPrice{
     
     require(msg.value != 0);
     uint256 weiAmount = msg.value;
+    // call the updatePrice function from the fetch price contract to get the current ETH price in USD
     uint256 _numberOfTokens = _getTokenAmount(weiAmount);
-    //need to transfer some tokens to the tokensale contract before performing this operation 
+    // need to transfer some tokens to the tokensale contract before performing this operation 
+    // before launching the crowdsale 
     tokenContract.transfer(_beneficiary, _numberOfTokens);
     tokensSold += _numberOfTokens;
     emit Sell(msg.sender, _numberOfTokens);
